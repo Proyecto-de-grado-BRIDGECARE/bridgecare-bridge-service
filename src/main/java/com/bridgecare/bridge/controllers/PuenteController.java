@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -42,13 +43,12 @@ public class PuenteController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> addPuente(@RequestPart Puente puente, @RequestPart MultipartFile imageFile) {
+    public ResponseEntity<?> addPuente(@RequestBody Puente puente) {
         try {
             Puente puente1 = service.createPuente(puente);
             return new ResponseEntity<>(puente1, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-
         }
     }
 
