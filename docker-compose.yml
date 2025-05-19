@@ -9,3 +9,9 @@ services:
       - "8081:8081"
     env_file:
       - .env
+    networks:
+      - bridgecare-network
+
+networks:
+  bridgecare-network:
+    external: true
