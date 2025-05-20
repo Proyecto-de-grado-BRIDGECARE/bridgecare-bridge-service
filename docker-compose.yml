@@ -1,5 +1,7 @@
 services:
   bridge-service:
+    container_name: bridge-service
+    image: bridge-service
     build:
       context: .
       args:
