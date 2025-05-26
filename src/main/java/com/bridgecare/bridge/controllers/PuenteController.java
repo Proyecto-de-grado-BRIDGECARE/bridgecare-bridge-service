@@ -24,6 +24,7 @@ import com.bridgecare.common.models.entities.Puente;
 @RestController
 @RequestMapping("/api/puentes")
 public class PuenteController {
+    
     @Autowired
     private PuenteService service;
 
@@ -85,16 +86,6 @@ public class PuenteController {
             return new ResponseEntity<>("Puente not found", HttpStatus.NOT_FOUND);
         }
     }
-    @DeleteMapping("/cascada/{puenteId}")
-    public ResponseEntity<String> deleteCascada(@PathVariable Long puenteId) {
-        try {
-            service.deletePuenteCascada(puenteId);
-            return ResponseEntity.ok("Puente y datos asociados eliminados");
-        } catch (Exception e) {
-            return ResponseEntity.status(500).body("Error al eliminar: " + e.getMessage());
-        }
-    }
-
 
     @GetMapping("/search")
     public ResponseEntity<List<Puente>> searchPuentes(@RequestParam String keyword) {
