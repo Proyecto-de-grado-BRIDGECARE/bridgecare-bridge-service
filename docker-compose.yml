@@ -2,6 +2,7 @@ services:
   bridge-service:
     container_name: bridge-service
     image: bridge-service
+    restart: unless-stopped
     build:
       context: .
       args:
